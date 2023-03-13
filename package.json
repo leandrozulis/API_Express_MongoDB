@@ -1,0 +1,24 @@
+{
+  "name": "api_express_mongodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandrozulis/API_Express_MongoDB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leandrozulis/API_Express_MongoDB/issues"
+  },
+  "homepage": "https://github.com/leandrozulis/API_Express_MongoDB#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
