@@ -58,6 +58,18 @@ class LivroController {
       })
   }
 
+  static listarLivroPorEditora = async (req, res) => {
+    const editora = req.query.editora
+
+    try {
+      const edit = await livros.find({ 'editora': editora }, {})
+      res.status(200).send(edit);
+    } catch (err) {
+      res.status(500).send({ message: err.message })
+    }
+
+  }
+
 }
 
 export default LivroController;
