@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/leandrozulis/API_Express_MongoDB#readme",
   "devDependencies": {
+    "eslint": "^8.41.0",
     "nodemon": "^2.0.21"
   },
   "dependencies": {
