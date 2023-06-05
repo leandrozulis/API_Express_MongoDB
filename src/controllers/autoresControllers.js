@@ -38,7 +38,7 @@ class AutorController {
 
     try {
       const id = req.params.id;
-      autores.findByIdAndUpdate(id, { $set: req.body });
+      await autores.findByIdAndUpdate(id, { $set: req.body });
       res.status(200).send({ message: "Autor atualizado com sucesso!" });
     } catch (err) {
       res.status(500).send({ message: err.message });
@@ -46,16 +46,16 @@ class AutorController {
 
   };
 
-  static excluirAutor = (req, res) => {
+  static excluirAutor = async (req, res) => {
 
     try {
       const id = req.params.id;
-      autores.findByIdAndDelete(id);
+      await autores.findByIdAndDelete(id);
       res.status(200).send({ message: "Autor excluído" });
     } catch (err) {
       res.status(500).send({ message: err.message });
     }
-    
+
   };
 
 }
