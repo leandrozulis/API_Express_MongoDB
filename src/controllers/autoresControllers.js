@@ -2,16 +2,16 @@ import autores from "../models/Autor.js";
 
 class AutorController {
 
-  static listarAutorPorId = (req, res) => {
-    const id = req.params.id;
+  static listarAutorPorId = async (req, res) => {
 
-    autores.findById(id)
-      .then(autor => {
-        res.status(200).json(autor);
-      })
-      .catch(err => {
-        res.status(400).send({ message: `${err.message} - ID do Autor não localizado` });
-      });
+    try {
+      const id = req.params.id;
+      const listaAutor = await autores.findById(id);
+      res.status(200).json(listaAutor);
+    } catch (err) {
+      res.status(400).send({ message: `${err.message} - ID do Autor não localizado` });
+    }
+
   };
 
   static listarAutores = async (req, res) => {
@@ -34,28 +34,28 @@ class AutorController {
       });
   };
 
-  static atualizarAutor = (req, res) => {
-    const id = req.params.id;
+  static atualizarAutor = async (req, res) => {
 
-    autores.findByIdAndUpdate(id, { $set: req.body })
-      .then(() => {
-        res.status(200).send({ message: "Autor atualizado com sucesso!" });
-      })
-      .catch(err => {
-        res.status(500).send({ message: err.message });
-      });
+    try {
+      const id = req.params.id;
+      autores.findByIdAndUpdate(id, { $set: req.body });
+      res.status(200).send({ message: "Autor atualizado com sucesso!" });
+    } catch (err) {
+      res.status(500).send({ message: err.message });
+    }
+
   };
 
   static excluirAutor = (req, res) => {
-    const id = req.params.id;
 
-    autores.findByIdAndDelete(id)
-      .then(() => {
-        res.status(200).send({ message: "Autor excluído" });
-      })
-      .catch(err => {
-        res.status(500).send({ message: err.message });
-      });
+    try {
+      const id = req.params.id;
+      autores.findByIdAndDelete(id);
+      res.status(200).send({ message: "Autor excluído" });
+    } catch (err) {
+      res.status(500).send({ message: err.message });
+    }
+    
   };
 
 }
